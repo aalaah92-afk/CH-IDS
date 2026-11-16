@@ -10,13 +10,13 @@ pip install -r code/requirements.txt
 python code/verify_results.py
 ```
 This recomputes the headline numbers of Tables 8, 11, 12, 13, 17, 18, 20 and 25 and the λ* analysis of Section 4.4
-directly from the stored per-seed result files in `results/`. The full re-run is described below.
+directly from the stored per-seed result files in `Results/`. The full re-run is described below.
 
 ## Layout
 ```
 code/      all scripts (Python 3.13); verify_results.py recomputes the main tables
 configs/   models.json (every hyperparameter), protocols.json (seeds, budgets, protocol settings)
-results/   every per-seed result file used in the manuscript (JSON)
+Results/   every per-seed result file used in the manuscript (JSON)
 figs/      figures are written here
 data/      put the public datasets here (not redistributed), or set CHIDS_DATA
 ```
