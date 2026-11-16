@@ -2,7 +2,7 @@
 usage: python code/verify_results.py"""
 import os, json
 ROOT = os.environ.get("CHIDS_ROOT", os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
-R = os.path.join(ROOT, "results")
+R = next((os.path.join(ROOT, n) for n in ("results", "Results") if os.path.isdir(os.path.join(ROOT, n))), os.path.join(ROOT, "results"))
 L = lambda f: json.load(open(os.path.join(R, f)))
 S, FX, C, ST, LB, RT = L("rev3_summary.json"), L("rev3_fix_summary.json"), L("calib.json"), L("stats_rev3.json"), L("stats_lambda.json"), L("runtime_v2.json")
 pc = lambda x, d=1: f"{100 * x:.{d}f}"
