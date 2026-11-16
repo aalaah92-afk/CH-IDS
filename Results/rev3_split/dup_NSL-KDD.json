@@ -1,0 +1,50 @@
+{
+ "n_train": 125973,
+ "share_train_rows_with_duplicate": 0.0002460844784199789,
+ "distinct_train_vectors": 125957,
+ "conflicting_label_vectors": 7,
+ "Dcal1_in_Dfit": {
+  "all": 0.000449842555105713,
+  "benign": 0.00028050490883590464,
+  "attack": 0.0006443298969072165
+ },
+ "Dcal2_in_Dfit": {
+  "all": 0.000149947518368571,
+  "benign": 0.0,
+  "attack": 0.00032216494845360824
+ },
+ "hold-out_in_Dfit": {
+  "all": 0.0002248959856066569,
+  "benign": 0.00042069835927639884,
+  "attack": 0.0
+ },
+ "hold-out_in_Dcal2": 0.0,
+ "KDDTest+_in_training": {
+  "all": 0.029453513129879347,
+  "benign": 0.010812480691998765,
+  "attack": 0.04355957297592145
+ },
+ "KDDTest-21_in_training": {
+  "all": 0.04464135021097047,
+  "benign": 0.04228624535315985,
+  "attack": 0.04516395133017117
+ },
+ "nn_hold-out": {
+  "exact": 0.0,
+  "lt_0_1": 0.591,
+  "lt_0_5": 0.952,
+  "median": 0.07567942887544632
+ },
+ "nn_KDDTest+": {
+  "exact": 0.0255,
+  "lt_0_1": 0.358,
+  "lt_0_5": 0.655,
+  "median": 0.19000860303640366
+ },
+ "nn_KDDTest-21": {
+  "exact": 0.035,
+  "lt_0_1": 0.2085,
+  "lt_0_5": 0.3705,
+  "median": 1.5453749299049377
+ }
+}

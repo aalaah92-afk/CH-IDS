@@ -1,0 +1,39 @@
+{
+ "n_train": 175341,
+ "share_train_rows_with_duplicate": 0.4793459601576357,
+ "distinct_train_vectors": 101040,
+ "conflicting_label_vectors": 229,
+ "Dcal1_in_Dfit": {
+  "all": 0.46466278819219997,
+  "benign": 0.09581646423751687,
+  "attack": 0.637701804368471
+ },
+ "Dcal2_in_Dfit": {
+  "all": 0.4683830658192395,
+  "benign": 0.09274873524451939,
+  "attack": 0.6446660335549225
+ },
+ "hold-out_in_Dfit": {
+  "all": 0.4725319114558087,
+  "benign": 0.09964592817400102,
+  "attack": 0.6475546058879392
+ },
+ "hold-out_in_Dcal2": 0.26458232347713684,
+ "UNSW-NB15 test_in_training": {
+  "all": 0.10373852208132925,
+  "benign": 0.039783783783783784,
+  "attack": 0.1559384099532339
+ },
+ "nn_hold-out": {
+  "exact": 0.469,
+  "lt_0_1": 0.52,
+  "lt_0_5": 0.81,
+  "median": 0.04751846566796303
+ },
+ "nn_UNSW-NB15 test": {
+  "exact": 0.1075,
+  "lt_0_1": 0.2035,
+  "lt_0_5": 0.5875,
+  "median": 0.4064463824033737
+ }
+}

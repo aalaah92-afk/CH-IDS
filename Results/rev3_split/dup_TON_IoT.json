@@ -1,0 +1,39 @@
+{
+ "n_train": 179386,
+ "share_train_rows_with_duplicate": 0.5858929905343784,
+ "distinct_train_vectors": 80262,
+ "conflicting_label_vectors": 24,
+ "Dcal1_in_Dfit": {
+  "all": 0.5749183952827208,
+  "benign": 0.5386666666666666,
+  "attack": 0.5861735890713399
+ },
+ "Dcal2_in_Dfit": {
+  "all": 0.5814467726650521,
+  "benign": 0.5537777777777778,
+  "attack": 0.5900372567959156
+ },
+ "hold-out_in_Dfit": {
+  "all": 0.5805891179025507,
+  "benign": 0.5516666666666666,
+  "attack": 0.5895684570009314
+ },
+ "hold-out_in_Dcal2": 0.4859827844902472,
+ "TON_IoT test_in_training": {
+  "all": 0.5851154562971854,
+  "benign": 0.57,
+  "attack": 0.5898083371279547
+ },
+ "nn_hold-out": {
+  "exact": 0.5895,
+  "lt_0_1": 0.977,
+  "lt_0_5": 0.993,
+  "median": 4.214684778958144e-08
+ },
+ "nn_TON_IoT test": {
+  "exact": 0.593,
+  "lt_0_1": 0.978,
+  "lt_0_5": 0.9985,
+  "median": 4.214684778958144e-08
+ }
+}

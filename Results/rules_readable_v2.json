@@ -1,0 +1,222 @@
+{
+ "NSL-KDD": [
+  {
+   "support": 35103,
+   "conds": [
+    "src_bytes \u2264 8",
+    "dst_bytes \u2264 3",
+    "logged_in = 0",
+    "count \u2265 6",
+    "dst_host_count \u2265 67",
+    "service \u2260 http",
+    "service \u2260 smtp"
+   ],
+   "n_conds": 8
+  },
+  {
+   "support": 2320,
+   "conds": [
+    "service = ecr_i",
+    "src_bytes \u2265 184"
+   ],
+   "n_conds": 3
+  },
+  {
+   "support": 1038,
+   "conds": [
+    "service = http",
+    "src_bytes \u2264 28",
+    "dst_host_same_srv_rate \u2264 0.31",
+    "dst_host_count \u2265 105"
+   ],
+   "n_conds": 4
+  },
+  {
+   "support": 690,
+   "conds": [
+    "src_bytes \u2265 11223",
+    "hot \u2265 1",
+    "dst_host_serror_rate \u2264 0.015",
+    "dst_host_srv_rerror_rate > 0.00499",
+    "service \u2260 ecr_i"
+   ],
+   "n_conds": 6
+  },
+  {
+   "support": 220,
+   "conds": [
+    "29 \u2264 src_bytes \u2264 11222",
+    "hot \u2265 26",
+    "duration \u2264 7",
+    "dst_host_srv_count \u2264 139",
+    "service \u2260 ecr_i"
+   ],
+   "n_conds": 7
+  },
+  {
+   "support": 165,
+   "conds": [
+    "service = smtp",
+    "src_bytes \u2264 28",
+    "dst_bytes \u2264 3",
+    "logged_in = 0",
+    "count \u2265 10",
+    "service \u2260 http"
+   ],
+   "n_conds": 7
+  },
+  {
+   "support": 109,
+   "conds": [
+    "src_bytes \u2264 28",
+    "dst_bytes \u2265 4",
+    "dst_host_rerror_rate > 0.09",
+    "dst_host_diff_srv_rate > 0.415",
+    "service \u2260 http"
+   ],
+   "n_conds": 5
+  },
+  {
+   "support": 56,
+   "conds": [
+    "src_bytes \u2265 11223",
+    "hot \u2265 1",
+    "dst_host_serror_rate \u2264 0.015",
+    "dst_host_srv_rerror_rate \u2264 0.00499",
+    "dst_host_srv_count \u2264 35",
+    "service \u2260 ecr_i"
+   ],
+   "n_conds": 7
+  },
+  {
+   "support": 53,
+   "conds": [
+    "src_bytes \u2265 353",
+    "hot = 0",
+    "dst_host_same_src_port_rate > 0.815",
+    "dst_bytes = 0",
+    "duration \u2265 3",
+    "service \u2260 ecr_i"
+   ],
+   "n_conds": 8
+  }
+ ],
+ "UNSW-NB15": [
+  {
+   "support": 47249,
+   "conds": [
+    "sttl \u2265 61",
+    "sbytes \u2264 200",
+    "smean \u2265 53",
+    "ct_state_ttl \u2265 1",
+    "ct_dst_sport_ltm \u2265 2"
+   ],
+   "n_conds": 5
+  },
+  {
+   "support": 210,
+   "conds": [
+    "sttl \u2264 60",
+    "sinpkt \u2264 0.0005",
+    "ct_dst_sport_ltm \u2265 2",
+    "proto \u2260 arp"
+   ],
+   "n_conds": 4
+  },
+  {
+   "support": 148,
+   "conds": [
+    "sttl \u2265 61",
+    "sbytes \u2264 200",
+    "smean \u2265 53",
+    "ct_state_ttl = 0",
+    "dur > 0.0153"
+   ],
+   "n_conds": 5
+  }
+ ],
+ "TON_IoT": [
+  {
+   "support": 21687,
+   "conds": [
+    "dns_qclass = 0",
+    "src_pkts \u2264 9",
+    "5 \u2264 src_ip_bytes \u2264 61",
+    "http_version \u2264 0.449",
+    "dst_ip_bytes \u2264 4",
+    "src_bytes \u2264 240"
+   ],
+   "n_conds": 8
+  },
+  {
+   "support": 4052,
+   "conds": [
+    "dns_qclass \u2265 1",
+    "dst_ip_bytes \u2265 7",
+    "dst_bytes \u2264 68",
+    "duration \u2264 0.00882"
+   ],
+   "n_conds": 6
+  },
+  {
+   "support": 1888,
+   "conds": [
+    "dns_qclass \u2265 1",
+    "dst_ip_bytes \u2265 7",
+    "dst_bytes \u2265 69",
+    "src_pkts \u2265 2",
+    "src_bytes \u2264 171",
+    "src_ip_bytes \u2264 142",
+    "duration \u2264 0.102"
+   ],
+   "n_conds": 8
+  },
+  {
+   "support": 1233,
+   "conds": [
+    "dns_qclass = 0",
+    "10 \u2264 src_pkts \u2264 119",
+    "src_ip_bytes \u2265 5",
+    "http_version \u2264 0.449",
+    "src_bytes \u2264 279",
+    "dst_ip_bytes \u2265 6",
+    "duration \u2264 11.1"
+   ],
+   "n_conds": 8
+  },
+  {
+   "support": 228,
+   "conds": [
+    "dns_qclass = 0",
+    "src_pkts \u2265 121",
+    "dst_bytes \u2264 807721",
+    "duration \u2264 1.46"
+   ],
+   "n_conds": 5
+  },
+  {
+   "support": 226,
+   "conds": [
+    "dns_qclass \u2265 1",
+    "dst_ip_bytes \u2265 7",
+    "dst_bytes \u2264 59",
+    "0.0115 < duration \u2264 0.102",
+    "dns_rcode \u2265 2"
+   ],
+   "n_conds": 8
+  },
+  {
+   "support": 80,
+   "conds": [
+    "dns_qclass \u2265 1",
+    "dst_ip_bytes \u2265 7",
+    "dst_bytes \u2265 69",
+    "src_pkts \u2265 2",
+    "src_bytes \u2264 171",
+    "154 \u2264 src_ip_bytes \u2264 178",
+    "duration > 0.102"
+   ],
+   "n_conds": 8
+  }
+ ]
+}
