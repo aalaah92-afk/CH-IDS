@@ -1,0 +1,87 @@
+{
+  "_note": "Hyperparameters used for every reported result. Source of truth: code/models.py and code/data.py.",
+  "preprocessing": {
+    "categorical": "OneHotEncoder(handle_unknown='infrequent_if_exist', min_frequency=20)",
+    "numeric": "signed log transform sign(x)*log1p(|x|), then StandardScaler fitted on D_fit",
+    "dtype": "float32",
+    "TON_IoT": "dropped: src_ip, dst_ip, src_port, dst_port, dns_query, ssl_subject, ssl_issuer, http_uri, http_user_agent, weird_name, weird_addl (plus labels); remaining string fields coerced to 0, so the models use the numeric fields"
+  },
+  "partitions": {
+    "D_fit": 0.8235,
+    "calibration_partition": 0.1765,
+    "calibration_partition_split": {
+      "D_cal1": 0.3,
+      "D_cal2": 0.3,
+      "hold_out": 0.4
+    },
+    "stratified_by": "attack family"
+  },
+  "rule_tier": {
+    "learner": "DecisionTreeClassifier(criterion='gini', max_depth=8, min_samples_leaf=30, random_state=seed)",
+    "rule_admitted_if": {
+      "leaf_precision_min": 0.999,
+      "support_min": 50,
+      "benign_matches_in_D_cal1": 0
+    }
+  },
+  "supervised_tier": {
+    "learner": "LGBMClassifier",
+    "n_estimators": 300,
+    "learning_rate": 0.05,
+    "num_leaves": 63,
+    "subsample": 0.8,
+    "subsample_freq": 1,
+    "colsample_bytree": 0.8,
+    "random_state": "seed"
+  },
+  "anomaly_tier": {
+    "learner": "MLPRegressor autoencoder",
+    "hidden_layer_sizes": [
+      64,
+      16,
+      64
+    ],
+    "activation": "relu",
+    "output": "identity",
+    "solver": "adam",
+    "learning_rate_init": 0.001,
+    "batch_size": 256,
+    "alpha_L2": 0.0001,
+    "max_iter": 60,
+    "early_stopping": true,
+    "validation_fraction": 0.1,
+    "n_iter_no_change": 5,
+    "input_clip": [
+      -10,
+      10
+    ],
+    "max_benign_training_flows": 60000,
+    "score": "mean squared reconstruction error"
+  },
+  "fusion": {
+    "statistic": "T_lambda = p_s (lambda=0); min{p_s/(1-lambda), p_a/lambda} (0<lambda<1); p_a (lambda=1)",
+    "system_statistic": "G = -1 - u for rule matches, else T_lambda - 1e-9*u, u = 0.5*s_s + 0.5*a/(1+a)",
+    "lambda_grid": [
+      0.0,
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      0.9
+    ],
+    "lambda_selection": "inner leave-one-family-out on D_cal1 with a reduced LightGBM (100 trees, learning_rate 0.1)",
+    "threshold": "alert iff k >= 1 and G(x) < G_(k) of D_cal2 benign flows, k = floor(alpha*(n+1))"
+  },
+  "baselines": {
+    "LR": "LogisticRegression(max_iter=2000, C=1.0)",
+    "DT": "DecisionTreeClassifier(min_samples_leaf=2, random_state=seed)",
+    "RF": "RandomForestClassifier(n_estimators=150, random_state=seed)",
+    "SVM-RBF": "SVC(kernel='rbf', C=10, gamma='scale', random_state=seed)",
+    "MLP": "MLPClassifier(hidden_layer_sizes=(128, 64), batch_size=256, max_iter=60, early_stopping=True, n_iter_no_change=5)",
+    "XGBoost": "XGBClassifier(n_estimators=300, max_depth=8, learning_rate=0.1, subsample=0.8, colsample_bytree=0.8, tree_method='hist')",
+    "LightGBM": "as supervised_tier",
+    "IForest": "IsolationForest(n_estimators=200, max_samples=256, random_state=seed)",
+    "AE": "as anomaly_tier",
+    "Seq. hybrid (thesis)": "induced rules, then SMOTE + Random Forest (see code/models.py)"
+  }
+}

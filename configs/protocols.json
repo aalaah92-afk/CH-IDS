@@ -1,0 +1,19 @@
+{
+  "seeds": {"protocol_A": [0, 1, 2, 3, 4], "protocol_B": [0, 1, 2], "protocol_C": [0, 1, 2, 3, 4], "protocol_E": [0, 1, 2, 3, 4]},
+  "budgets_alpha": [0.001, 0.005, 0.01, 0.02, 0.05, 0.1],
+  "protocol_A": "train on official training partitions, test on official test sets (TON_IoT: stratified 85/15 split of train_test_network)",
+  "protocol_B": "leave-one-attack-family-out, 22 families, family-level aggregation for statistics",
+  "protocol_C": "target vs realised FPR on hold-out, official tests and two sub-population shifts; re-calibration windows 250-1000 flows",
+  "protocol_D": "cost on one CPU thread (CHIDS_NJOBS=1, OMP/OPENBLAS/MKL threads = 1)",
+  "protocol_E": {
+    "deduplication": "exact duplicates and label-conflicting vectors removed before any split",
+    "host_disjoint": "TON_IoT benign test flows from source hosts unseen in fitting and calibration (about 15% of benign flows)",
+    "contaminated_windows": {"n": 1000, "attack_share": [0.0, 0.005, 0.01, 0.02, 0.05], "windows_per_seed": 20,
+                             "rules": ["usual rank k", "analyst inspection, stop at k' = floor(alpha*(n-a+1)) confirmed benign", "rank margin k + ceil(0.01 n)"]},
+    "drift_monitor": {"test": "two-sample Kolmogorov-Smirnov, level 0.01", "window_sizes": [250, 500, 1000], "windows_per_seed": 200,
+                      "reference": "all flows of D_cal2 (unlabeled windows) or its benign flows (benign-only windows)"},
+    "unseen_host_remedies": {"host_disjoint_calibration": true, "threshold_recalibration_n": [250, 500, 1000, 2000],
+                             "reference_refresh_n": [250, 500, 1000, 2000], "adaptation_n": [500, 1000, 2000],
+                             "adaptation_split": {"D_fit": 0.4, "D_cal1": 0.3, "D_cal2": 0.3}}
+  }
+}

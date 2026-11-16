@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the article."
+title: "CH-IDS: conformal false-alarm budgeting for hybrid intrusion detection"
+authors:
+  - family-names: Haddad
+    given-names: Alaa
+    affiliation: Multimedia University
+  - family-names: Wajs
+    given-names: Sarvesh August
+    affiliation: Multimedia University
+repository-code: "https://github.com/aalaah92-afk/CH-IDS"
+license: MIT
+preferred-citation:
+  type: article
+  title: "A Conformal Framework for System-Level False-Alarm Budgeting in Hybrid Intrusion Detection"
+  authors:
+    - family-names: Haddad
+      given-names: Alaa
+    - family-names: Wajs
+      given-names: Sarvesh August
+  journal: "Computers"
+  year: 2026
